@@ -1,4 +1,4 @@
-import { Button, Stack } from "react-bootstrap"
+import { Button } from "react-bootstrap"
 import Container from "react-bootstrap/Container"
 import AddBudgetModal from "./components/AddBudgetModal"
 import AddExpenseModal from "./components/AddExpenseModal"
@@ -7,7 +7,8 @@ import BudgetCard from "./components/BudgetCard"
 import UncategorizedBudgetCard from "./components/UncategorizedBudgetCard"
 import TotalBudgetCard from "./components/TotalBudgetCard"
 import { useState } from "react"
-import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "./contexts/BudgetsContext"
+import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "./contexts/BudgetsContext";
+import './index.css';
 
 function App() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
@@ -19,20 +20,22 @@ function App() {
   function openAddExpenseModal(budgetId) {
     setShowAddExpenseModal(true)
     setAddExpenseModalBudgetId(budgetId)
-  }
+  };
 
   return (
     <>
       <Container className="my-4">
-        <Stack direction="horizontal" gap="2" className="mb-4">
+        <header>
           <h1 className="me-auto">Budgets</h1>
-          <Button variant="primary" onClick={() => setShowAddBudgetModal(true)}>
-            Add Budget
-          </Button>
-          <Button variant="outline-primary" onClick={openAddExpenseModal}>
-            Add Expense
-          </Button>
-        </Stack>
+          <div className='header-buttons-box'>
+            <Button variant="primary" style={{ marginRight: '10px' }} onClick={() => setShowAddBudgetModal(true)}>
+              Add Budget
+            </Button>
+            <Button variant="outline-primary" onClick={openAddExpenseModal}>
+              Add Expense
+            </Button>
+          </div>
+        </header>
         <div
           style={{
             display: "grid",
